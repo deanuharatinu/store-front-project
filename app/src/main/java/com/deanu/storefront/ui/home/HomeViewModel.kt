@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: HomeRepository) : ViewModel() {
     private val _status = MutableLiveData<String>()
+
     val status: LiveData<String> = _status
 
     init {
