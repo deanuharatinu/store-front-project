@@ -1,6 +1,9 @@
 package com.deanu.storefront
 
 import android.app.Application
+import androidx.room.Room
+import com.deanu.storefront.data.local.StoreFrontDatabase
+import com.deanu.storefront.utils.DATABASE_NAME
 import com.deanu.storefront.utils.FAKE_STORE_API
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -11,7 +14,7 @@ class StoreFrontApp : Application() {
 
     companion object {
         lateinit var retrofit: Retrofit
-        // TODO: insert the database to initialize
+        lateinit var database: StoreFrontDatabase
     }
 
     override fun onCreate() {
@@ -26,26 +29,9 @@ class StoreFrontApp : Application() {
             .baseUrl(FAKE_STORE_API)
             .build()
 
-//        lateinit var INSTANCE: VideosDatabase
-
-//        companion object {
-//        @Volatile
-//        private var INSTANCE: StoreFrontDatabase? = null
-//
-//        fun getInstance(context: Context): StoreFrontDatabase {
-//            synchronized(this) {
-//                var instance = INSTANCE
-//                if (instance == null) {
-//                    instance = Room.databaseBuilder(
-//                        context.applicationContext,
-//                        StoreFrontDatabase::class.java,
-//                        DATABASE_NAME
-//                    ).fallbackToDestructiveMigration().build()
-//                }
-//                return instance
-//            }
-//        }
-//    }
+        database = Room.databaseBuilder(
+            applicationContext, StoreFrontDatabase::class.java, DATABASE_NAME
+        ).fallbackToDestructiveMigration().build()
 
     }
 

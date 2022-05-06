@@ -7,7 +7,7 @@
 
         <variable
             name="storeItem"
-            type="com.deanu.storefront.data.model.StoreItemModel" />
+            type="com.deanu.storefront.data.models.StoreItemModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

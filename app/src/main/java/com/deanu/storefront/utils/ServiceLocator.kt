@@ -1,22 +1,22 @@
 package com.deanu.storefront.utils
 
-import android.content.Context
 import com.deanu.storefront.data.HomeRepository
-import com.deanu.storefront.data.remote.DefaultHomeRepository
+import com.deanu.storefront.data.local.StoreFrontDatabase.Companion.storeFrontDatabase
+import com.deanu.storefront.data.DefaultHomeRepository
 import com.deanu.storefront.data.remote.StoreItemApiService.Companion.retrofitService
 
 object ServiceLocator {
     @Volatile
     var homeRepository: HomeRepository? = null
 
-    fun provideHomeRepository(context: Context): HomeRepository {
+    fun provideHomeRepository(): HomeRepository {
         synchronized(this) {
-            return homeRepository ?: homeRepository ?: createHomeRepository(context)
+            return homeRepository ?: homeRepository ?: createHomeRepository()
         }
     }
 
-    private fun createHomeRepository(context: Context): HomeRepository {
-        val newRepo = DefaultHomeRepository(retrofitService)
+    private fun createHomeRepository(): HomeRepository {
+        val newRepo = DefaultHomeRepository(retrofitService, storeFrontDatabase)
         homeRepository = newRepo
         return newRepo
     }

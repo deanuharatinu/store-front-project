@@ -14,10 +14,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: HomeViewModel by lazy {
-        ViewModelProvider(
-            this,
-            HomeViewModelFactory(requireActivity().applicationContext)
-        )[HomeViewModel::class.java]
+        ViewModelProvider(this, HomeViewModelFactory())[HomeViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -28,11 +25,16 @@ class HomeFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
         val adapter = StoreItemAdapter()
         binding.recyclerView.adapter = adapter
 
         viewModel.storeItemList.observe(viewLifecycleOwner) { list ->
             list?.let { adapter.submitList(list) }
+        }
+
+        viewModel.status.observe(viewLifecycleOwner) { isDataReady ->
+            if (isDataReady) viewModel.storeInteger()
         }
 
         return binding.root

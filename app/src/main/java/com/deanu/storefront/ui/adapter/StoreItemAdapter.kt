@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.deanu.storefront.data.model.StoreItemModel
+import com.deanu.storefront.data.models.StoreItemModel
 import com.deanu.storefront.databinding.StoreItemBinding
 
 class StoreItemAdapter :

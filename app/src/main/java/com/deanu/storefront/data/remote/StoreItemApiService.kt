@@ -1,7 +1,7 @@
 package com.deanu.storefront.data.remote
 
 import com.deanu.storefront.StoreFrontApp
-import com.deanu.storefront.data.model.StoreItemModel
+import com.deanu.storefront.data.models.StoreItemModel
 import com.deanu.storefront.utils.PRODUCTS_API
 import retrofit2.http.GET
 
