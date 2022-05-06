@@ -20,6 +20,9 @@ class HomeViewModel(
     private val _status = MutableLiveData(false)
     val status: LiveData<Boolean> = _status
 
+    private val _isLoading = MutableLiveData(false)
+    val isLoading: LiveData<Boolean> = _isLoading
+
     private val _storeItemList = MutableLiveData<List<StoreItemModel>>()
     val storeItemList: LiveData<List<StoreItemModel>> = _storeItemList
 
@@ -40,12 +43,14 @@ class HomeViewModel(
     private fun getStoreItems() {
         viewModelScope.launch {
             try {
+                _isLoading.value = true
                 _storeItemList.value = repository.getAllStoreItems()
                 _status.value = true
             } catch (e: Exception) {
                 _status.value = false
                 Log.e("getStoreitems", "${e.message}")
             }
+            _isLoading.value = false
         }
     }
 }

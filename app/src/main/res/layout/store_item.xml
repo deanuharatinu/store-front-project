@@ -8,41 +8,61 @@
         <variable
             name="storeItem"
             type="com.deanu.storefront.data.models.StoreItemModel" />
+
+        <variable
+            name="shortTitle"
+            type="String" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_task_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
+        android:layout_margin="10dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:padding="15dp">
+
+            <!--            <com.facebook.shimmer.ShimmerFrameLayout-->
+            <!--                android:id="@+id/shimmer_view_container"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                app:shimmer_duration="800"-->
+            <!--                tools:visibility="gone">-->
 
             <TextView
                 android:id="@+id/tv_task_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{storeItem.title}"
+                android:text="@{shortTitle}"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#484849"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Title" />
 
-            <TextView
-                android:id="@+id/tv_is_done"
+            <ImageView
+                android:id="@+id/iv_glide"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@{storeItem.description}"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="26dp"
+                android:contentDescription="@{shortTitle}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_task_text"
-                tools:layout_editor_absoluteX="12dp"
-                tools:layout_editor_absoluteY="80dp"
-                tools:text="Description" />
+                app:layout_constraintTop_toBottomOf="@id/tv_task_text" />
+            <!--            </com.facebook.shimmer.ShimmerFrameLayout>-->
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

@@ -1,6 +1,7 @@
 package com.deanu.storefront.data.models
 
 import com.deanu.storefront.data.local.entities.StoreItemEntity
+import com.deanu.storefront.utils.smartTruncate
 import com.squareup.moshi.Json
 
 data class StoreItemModel(

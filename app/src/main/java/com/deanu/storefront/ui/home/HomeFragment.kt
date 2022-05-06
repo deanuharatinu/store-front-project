@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.deanu.storefront.databinding.HomeFragBinding
@@ -22,6 +23,10 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = HomeFragBinding.inflate(inflater, container, false)
+
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolBar)
+
+        setHasOptionsMenu(true)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
